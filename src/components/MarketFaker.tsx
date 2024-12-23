@@ -30,7 +30,7 @@ function MarketFaker() {
 
   return (
     <div className="grid grid-cols-2 w-full gap-4 items-center justify-center p-4">
-      <div className="bg-[#1A2634] text-white rounded-lg w-full p-4 py-12">
+      <div className="bg-[#1A2634] text-white rounded-lg w-full p-4 py-14">
         <MarketInfo
           predictionData={predictionData}
           onDataChange={handleInputChange}
