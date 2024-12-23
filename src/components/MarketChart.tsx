@@ -47,7 +47,7 @@ export function MarketChart({ data }: { data: ChartData[] }) {
         </LineChart>
       </ResponsiveContainer>
       <div className="absolute left-0 bottom-[25px] text-xs text-[#babfc5] opacity-50 font-medium bg-gray-500/50 px-2 py-1 rounded-md">
-        Source: Polymarket.com
+        Source: PolymarketFaker
       </div>
       <div className="absolute right-0 top-0 text-xs text-[#8B949E] opacity-50">
         25%

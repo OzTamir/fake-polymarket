@@ -33,6 +33,11 @@ function App() {
         </a>{" "}
         for shits and giggles.
       </div>
+      <span className="text-xs text-[#8B949E] opacity-75">
+        This tool is for entertainment purposes only. It is not affiliated with
+        Polymarket and should not be used to create misleading or fraudulent
+        content.
+      </span>
     </div>
   );
 }
