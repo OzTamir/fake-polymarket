@@ -3,7 +3,6 @@ import {
   LineChart,
   ResponsiveContainer,
   XAxis,
-  Tooltip,
   ReferenceLine,
 } from "recharts";
 
@@ -37,25 +36,8 @@ export function MarketChart({ data }: { data: ChartData[] }) {
             interval={0}
             padding={{ left: 10, right: 10 }}
           />
-          <Tooltip
-            wrapperStyle={{ zIndex: 50 }}
-            content={({ active, payload }) => {
-              if (active && payload && payload.length) {
-                return (
-                  <div className="rounded-lg border  p-2 shadow-sm">
-                    <div className="flex flex-col">
-                      <span className="font-bold text-[#8B949E]">
-                        {payload[0].value}%
-                      </span>
-                    </div>
-                  </div>
-                );
-              }
-              return null;
-            }}
-          />
           <Line
-            type="monotone"
+            type="linear"
             dataKey="value"
             stroke="#3694FF"
             strokeWidth={1.5}

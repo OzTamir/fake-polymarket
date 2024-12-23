@@ -2,24 +2,52 @@ import { PredictionMarketProps } from "./MarketInfo";
 import { MarketChart } from "./MarketChart";
 import polymarketLogo from "/polymarket.svg";
 import { Clock, Settings, ArrowRightLeft } from "lucide-react";
+import { useEffect, useState } from "react";
 
-// Add this sample data (you should replace with real data)
-const sampleChartData = [
-  { date: "Dec 3", value: 25 },
-  { date: "Dec 6", value: 30 },
-  { date: "Dec 9", value: 15 },
-  { date: "Dec 12", value: 8 },
-  { date: "Dec 15", value: 7 },
-  { date: "Dec 18", value: 5 },
-  { date: "Dec 21", value: 4 },
-  { date: "Dec 23", value: 4 },
-];
+// Move sample data generation to a function
+function generateChartData(finalChance: number) {
+  const numberOfPoints = 10;
+  const result = [];
+
+  for (let i = 0; i < numberOfPoints; i++) {
+    const date = new Date();
+    date.setDate(date.getDate() - (numberOfPoints - i) * 3);
+
+    let value;
+    if (i >= numberOfPoints - 3) {
+      // Last three points converge to finalChance
+      const remaining = numberOfPoints - i;
+      value = finalChance + (Math.random() - 0.5) * 10 * remaining;
+    } else {
+      // Random values between 0 and 100 for earlier points
+      value = Math.random() * 100;
+    }
+
+    result.push({
+      date: date.toLocaleDateString("en-US", {
+        month: "short",
+        day: "numeric",
+      }),
+      value: Math.max(0, Math.min(100, value)), // Clamp between 0 and 100
+    });
+  }
+
+  return result;
+}
 
 export function MarketView({
   predictionData,
 }: {
   predictionData: PredictionMarketProps;
 }) {
+  const [chartData, setChartData] = useState(
+    generateChartData(predictionData.chance)
+  );
+
+  useEffect(() => {
+    setChartData(generateChartData(predictionData.chance));
+  }, [predictionData.chance]);
+
   return (
     <div className="p-6">
       <div className="mb-6">
@@ -70,7 +98,7 @@ export function MarketView({
         </div>
 
         <div className="mb-6 h-[200px] w-full rounded-lg p-0 pt-8">
-          <MarketChart data={sampleChartData} />
+          <MarketChart data={chartData} />
         </div>
 
         <div className="flex justify-between items-center">
