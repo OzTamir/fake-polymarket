@@ -4,7 +4,7 @@ import MarketFaker from "./components/MarketFaker";
 function App() {
   return (
     <div className="min-h-screen bg-[#0E1420] flex flex-col gap-4 items-center justify-center p-4">
-      <div className="flex flex-col gap-4 pl-6 items-center -mt-32">
+      <div className="flex flex-col gap-4 pl-6 items-center">
         <img
           src="/icon.svg"
           alt="Polymarket Faker Logo"
