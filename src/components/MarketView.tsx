@@ -4,6 +4,19 @@ import polymarketLogo from "/polymarket.svg";
 import { Clock, Settings, ArrowRightLeft } from "lucide-react";
 import { useEffect, useState } from "react";
 
+function calculateMarketChange(chance: number) {
+  const chanceRatio = chance / 100;
+  let min = -30 + chanceRatio * 30; // Will go from -30 to 0 as chance increases
+  let max = 30 - (1 - chanceRatio) * 30; // Will go from 30 to 0 as chance decreases
+
+  // Ensure we always have some range to work with
+  min = Math.min(Math.max(min, -30), 0);
+  max = Math.max(Math.min(max, 30), 0);
+
+  const change = Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(change);
+}
+
 // Move sample data generation to a function
 function generateChartData(finalChance: number) {
   const numberOfPoints = 12;
@@ -91,9 +104,19 @@ export function MarketView({
             <span className="text-[#2d9cdb] text-2xl font-bold">
               {predictionData.chance}% chance
             </span>
-            <span className="text-[#FF4D4D] text-sm font-bold mb-[2px]">
-              ↓ {100 - (predictionData.chance as number)}%
-            </span>
+            {(() => {
+              const change = calculateMarketChange(predictionData.chance);
+              const isPositive = change >= 0;
+              return (
+                <span
+                  className={`text-sm font-bold mb-[2px] ${
+                    isPositive ? "text-[#4CAF50]" : "text-[#FF4D4D]"
+                  }`}
+                >
+                  {isPositive ? "↑" : "↓"} {Math.abs(change)}%
+                </span>
+              );
+            })()}
           </div>
         </div>
 
