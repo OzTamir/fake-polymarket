@@ -13,12 +13,12 @@ function App() {
         </p>
       </div>
       <MarketFaker />
-      <div
-        className="absolute bottom-10 w-full flex justify-center text-sm text-[#8B949E] opacity-75
-      hover:opacity-100 transition-all duration-300 hover:underline hover:translate-y-[-25px] ease-in-out"
-      >
+      <div className="absolute bottom-10 w-full flex justify-center text-sm text-[#8B949E] opacity-75">
         Created by{" "}
-        <a href="https://oztamir.com/" className="text-[#2d9cdb] px-1">
+        <a
+          href="https://oztamir.com/"
+          className="text-[#2d9cdb] hover:underline hover:text-xl transition-all duration-300 ease-in-out px-1"
+        >
           Oz Tamir
         </a>{" "}
         for shits and giggles.
