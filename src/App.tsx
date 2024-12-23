@@ -1,41 +1,27 @@
-import { useState } from "react";
 import "./App.css";
-import { MarketInfo, PredictionMarketProps } from "./components/MarketInfo";
-import { MarketView } from "./components/MarketView";
+import MarketFaker from "./components/MarketFaker";
 
 function App() {
-  const [predictionData, setPredictionData] = useState<PredictionMarketProps>({
-    name: "Will Bitcoin be above $150,000 by the end of 2025?",
-    imageUrl: "https://bitcoin.org/img/home/bitcoin-img.svg",
-    chance: 4,
-    volumeUsd: 903616,
-    endDate: new Date("2025-01-09"),
-  });
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    field: keyof PredictionMarketProps
-  ) => {
-    const value = e.target.value;
-    setPredictionData((prev) => ({
-      ...prev,
-      [field]:
-        field === "chance" || field === "volumeUsd"
-          ? Number(value)
-          : field === "endDate"
-          ? new Date(value)
-          : value,
-    }));
-  };
-
   return (
-    <div className="min-h-screen bg-[#0E1420] flex items-center justify-center p-4">
-      <div className="bg-[#1A2634] text-white rounded-lg w-full max-w-2xl">
-        <MarketInfo
-          predictionData={predictionData}
-          onDataChange={handleInputChange}
-        />
-        <MarketView predictionData={predictionData} />
+    <div className="min-h-screen bg-[#0E1420] flex flex-col gap-4 items-center justify-center p-4">
+      <div className="flex flex-col gap-4 pl-6">
+        <p className="text-2xl font-bold text-white">
+          Create a fake Polymarket UI
+        </p>
+        <p className="text-sm text-[#8B949E]">
+          Useful for memes, shitposting, and other shananigans.
+        </p>
+      </div>
+      <MarketFaker />
+      <div
+        className="absolute bottom-10 w-full flex justify-center text-sm text-[#8B949E] opacity-75
+      hover:opacity-100 transition-all duration-300 hover:underline hover:translate-y-[-25px] ease-in-out"
+      >
+        Created by{" "}
+        <a href="https://oztamir.com/" className="text-[#2d9cdb] px-1">
+          Oz Tamir
+        </a>{" "}
+        for shits and giggles.
       </div>
     </div>
   );

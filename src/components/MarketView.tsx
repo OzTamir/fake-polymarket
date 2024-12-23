@@ -28,9 +28,11 @@ export function MarketView({
             <img
               src={predictionData.imageUrl}
               alt="Market thumbnail"
-              className="w-[50px] h-[50px] rounded-lg object-cover bg-[#0E1420]"
+              className="w-[64px] h-[64px] rounded-lg object-cover bg-[#0E1420]"
             />
-            <h2 className="text-lg font-bold m-0">{predictionData.name}</h2>
+            <h2 className="text-lg font-bold m-0 mr-8">
+              {predictionData.name}
+            </h2>
           </div>
           <img
             src={polymarketLogo}
