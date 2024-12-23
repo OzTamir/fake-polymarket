@@ -19,7 +19,7 @@ function App() {
           href="https://oztamir.com/"
           className="text-[#2d9cdb] hover:underline hover:text-xl transition-all duration-300 ease-in-out px-1"
         >
-          Oz Tamir
+          oztamir.eth
         </a>{" "}
         for shits and giggles.
       </div>
