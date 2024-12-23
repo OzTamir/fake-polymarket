@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 // Move sample data generation to a function
 function generateChartData(finalChance: number) {
-  const numberOfPoints = 10;
+  const numberOfPoints = 12;
   const result = [];
 
   for (let i = 0; i < numberOfPoints; i++) {

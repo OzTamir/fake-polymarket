@@ -12,6 +12,10 @@ interface ChartData {
 }
 
 export function MarketChart({ data }: { data: ChartData[] }) {
+  const average = Math.round(
+    data.reduce((sum, point) => sum + point.value, 0) / data.length
+  );
+
   return (
     <div className="relative w-full h-full">
       <ResponsiveContainer width="100%" height="100%">
@@ -20,8 +24,8 @@ export function MarketChart({ data }: { data: ChartData[] }) {
           margin={{ top: 5, right: 10, left: 10, bottom: 0 }}
         >
           <ReferenceLine
-            y={25}
-            stroke="#2D3741"
+            y={average}
+            stroke="#FFFFFF"
             strokeDasharray="3 3"
             opacity={0.5}
           />
@@ -49,8 +53,8 @@ export function MarketChart({ data }: { data: ChartData[] }) {
       <div className="absolute left-0 bottom-[25px] text-xs text-[#babfc5] opacity-50 font-medium bg-gray-500/50 px-2 py-1 rounded-md">
         Source: PolymarketFaker
       </div>
-      <div className="absolute right-0 top-0 text-xs text-[#8B949E] opacity-50">
-        25%
+      <div className="absolute right-0 top-8 text-xs text-[#8B949E] opacity-50">
+        {average}%
       </div>
     </div>
   );
