@@ -14,7 +14,13 @@ function App() {
       </div>
       <MarketFaker />
       <div className="absolute bottom-10 w-full flex justify-center text-sm text-[#8B949E] opacity-75">
-        Created by{" "}
+        <a
+          href="https://github.com/OzTamir/fake-polymarket"
+          className="text-[#2d9cdb] hover:underline hover:text-xl transition-all duration-300 ease-in-out px-1"
+        >
+          Created
+        </a>
+        by{" "}
         <a
           href="https://oztamir.com/"
           className="text-[#2d9cdb] hover:underline hover:text-xl transition-all duration-300 ease-in-out px-1"
