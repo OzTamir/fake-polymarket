@@ -37,7 +37,7 @@ export function MarketChart({ data }: { data: ChartData[] }) {
             axisLine={false}
             dy={10}
             tick={{ fill: "#8B949E", opacity: 0.5 }}
-            interval={0}
+            interval="preserveStartEnd"
             padding={{ left: 10, right: 10 }}
           />
           <Line
@@ -50,10 +50,10 @@ export function MarketChart({ data }: { data: ChartData[] }) {
           />
         </LineChart>
       </ResponsiveContainer>
-      <div className="absolute left-0 bottom-[25px] text-xs text-[#babfc5] opacity-50 font-medium bg-gray-500/50 px-2 py-1 rounded-md">
+      <div className="absolute left-0 bottom-[25px] text-[10px] sm:text-xs text-[#babfc5] opacity-50 font-medium bg-gray-500/50 px-2 py-1 rounded-md">
         Source: PolymarketFaker
       </div>
-      <div className="absolute right-0 top-8 text-xs text-[#8B949E] opacity-50">
+      <div className="absolute right-0 top-8 text-[10px] sm:text-xs text-[#8B949E] opacity-50">
         {average}%
       </div>
     </div>

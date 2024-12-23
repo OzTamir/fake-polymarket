@@ -33,7 +33,7 @@ export function MarketInfo({ predictionData, onDataChange }: MarketInfoProps) {
   };
 
   return (
-    <div className="grid gap-4 p-6">
+    <div className="grid gap-4 p-2 sm:p-6">
       <div className="grid gap-2">
         <Label htmlFor="market-name">Market Name</Label>
         <Input

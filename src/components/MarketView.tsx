@@ -62,10 +62,10 @@ export function MarketView({
   }, [predictionData.chance]);
 
   return (
-    <div className="p-6">
+    <div className="p-2 sm:p-6">
       <div className="mb-6">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-3 gap-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <img
               src={predictionData.imageUrl}
               alt="Market thumbnail"
@@ -124,12 +124,12 @@ export function MarketView({
           <MarketChart data={chartData} />
         </div>
 
-        <div className="flex justify-between items-center">
-          <div className="flex gap-1">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div className="flex flex-wrap gap-1">
             {["1H", "6H", "1D", "1W", "1M", "ALL"].map((period) => (
               <button
                 key={period}
-                className={`font-bold px-3 py-1.5 rounded-full text-md transition-colors ${
+                className={`font-bold px-3 py-1.5 rounded-full text-sm transition-colors ${
                   period === "ALL"
                     ? "bg-white text-black"
                     : "text-[#8B949E] hover:bg-[#2D3741] hover:text-white"
