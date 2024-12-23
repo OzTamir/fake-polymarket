@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import { MarketInfo, PredictionMarketProps } from "./components/MarketInfo";
+import { MarketView } from "./components/MarketView";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [predictionData, setPredictionData] = useState<PredictionMarketProps>({
+    name: "Will Bitcoin be above $150,000 by the end of 2025?",
+    imageUrl: "https://bitcoin.org/img/home/bitcoin-img.svg",
+    chance: 4,
+    volumeUsd: 903616,
+    endDate: new Date("2025-01-09"),
+  });
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: keyof PredictionMarketProps
+  ) => {
+    const value = e.target.value;
+    setPredictionData((prev) => ({
+      ...prev,
+      [field]:
+        field === "chance" || field === "volumeUsd"
+          ? Number(value)
+          : field === "endDate"
+          ? new Date(value)
+          : value,
+    }));
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="min-h-screen bg-[#0E1420] flex items-center justify-center p-4">
+      <div className="bg-[#1A2634] text-white rounded-lg w-full max-w-2xl">
+        <MarketInfo
+          predictionData={predictionData}
+          onDataChange={handleInputChange}
+        />
+        <MarketView predictionData={predictionData} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
