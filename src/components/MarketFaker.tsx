@@ -8,9 +8,9 @@ function MarketFaker() {
   const [predictionData, setPredictionData] = useState<PredictionMarketProps>({
     name: "Will Bitcoin be above $150,000 by the end of 2025?",
     imageUrl: "https://bitcoin.org/img/home/bitcoin-img.svg",
-    chance: 4,
-    volumeUsd: 903616,
-    endDate: new Date("2025-01-09"),
+    chance: 82,
+    volumeUsd: 1903616,
+    endDate: new Date("2025-12-31"),
   });
 
   const [{ isLoading }, convertToPng, ref] = useToPng<HTMLDivElement>({
