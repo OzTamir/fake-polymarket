@@ -16,7 +16,7 @@ function MarketFaker() {
   const [{ isLoading }, convertToPng, ref] = useToPng<HTMLDivElement>({
     onSuccess: (dataUrl) => {
       const link = document.createElement("a");
-      link.download = `prediction-${Date.now()}.png`;
+      link.download = `polymarket-faker-${Date.now()}.png`;
       link.href = dataUrl;
       link.click();
     },
