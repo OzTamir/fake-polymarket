@@ -1,5 +1,7 @@
 <div align="center">
-  <img src="public/icon.svg" alt="Polymarket Faker Logo" width="128" height="128" />
+  <a href="https://polymarketfaker.xyz">
+    <img src="public/icon.svg" alt="Polymarket Faker Logo" width="128" height="128" />
+  </a>
 </div>
 
 # Polymarket Faker
@@ -22,6 +24,7 @@ Create fake Polymarket UI for memes, shitposting, and other shenanigans. This to
 - Shadcn/ui Components
 - Recharts for data visualization
 - Date-fns for date handling
+- Cloudflare Workers (for CORS proxy)
 
 ## 🏃‍♂️ Getting Started
 
@@ -29,6 +32,7 @@ Create fake Polymarket UI for memes, shitposting, and other shenanigans. This to
 
 - Node.js (v16 or higher)
 - npm or yarn
+- Wrangler CLI (for Cloudflare Workers)
 
 ### Installation
 
@@ -43,12 +47,14 @@ cd polymarket-faker
 
 ```bash
 npm install
+npm install -D wrangler concurrently
 ```
 
-or
+or with yarn:
 
 ```bash
 yarn
+yarn add -D wrangler concurrently
 ```
 
 3. Run the development server:
@@ -57,10 +63,16 @@ yarn
 npm run dev
 ```
 
-or
+This will start both:
+
+- Vite dev server for the frontend
+- Cloudflare Workers development server for the CORS proxy
+
+Alternatively, you can run them separately:
 
 ```bash
-yarn dev
+npm run dev:worker  # Terminal 1: Start Cloudflare Workers
+npm run dev        # Terminal 2: Start Vite dev server
 ```
 
 4. Build the project:
@@ -69,15 +81,10 @@ yarn dev
 npm run build
 ```
 
-or
-
-```bash
-yarn build
-```
-
 ## 🧑‍💻 Development Scripts
 
-- `npm run dev` - Start development server
+- `npm run dev` - Start both frontend and worker development servers
+- `npm run dev:worker` - Start only the Cloudflare Worker server
 - `npm run build` - Create production build
 - `npm run lint` - Run ESLint
 - `npm run preview` - Preview production build locally

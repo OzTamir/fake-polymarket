@@ -67,7 +67,7 @@ export function MarketView({
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-3 gap-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <img
-              src={predictionData.imageUrl}
+              src={`/proxy?url=${encodeURIComponent(predictionData.imageUrl)}`}
               alt="Market thumbnail"
               className="w-[64px] h-[64px] rounded-lg object-cover bg-[#0E1420]"
             />

@@ -19,27 +19,29 @@ function App() {
         </p>
       </div>
       <MarketFaker />
-      <div className="absolute bottom-9 w-full flex justify-center text-xs text-[#8B949E] opacity-60 px-4 text-center">
-        <a
-          href="https://github.com/OzTamir/fake-polymarket"
-          className="text-[#2d9cdb] hover:underline px-1"
-        >
-          Created
-        </a>
-        by{" "}
-        <a
-          href="https://oztamir.com/"
-          className="text-[#2d9cdb] hover:underline px-1"
-        >
-          oztamir.eth
-        </a>{" "}
-        for shits and giggles.
+      <div className="flex flex-col gap-2">
+        <span className="text-xs text-[#8B949E] opacity-75 px-4 text-center">
+          This tool is for entertainment purposes only. It is not affiliated
+          with Polymarket and should not be used to create misleading or
+          fraudulent content.
+        </span>
+        <div className="flex justify-center text-xs text-[#8B949E] opacity-60 px-4 text-center">
+          <a
+            href="https://github.com/OzTamir/fake-polymarket"
+            className="text-[#2d9cdb] hover:underline px-1"
+          >
+            Created
+          </a>
+          by{" "}
+          <a
+            href="https://oztamir.com/"
+            className="text-[#2d9cdb] hover:underline px-1"
+          >
+            oztamir.eth
+          </a>{" "}
+          for shits and giggles.
+        </div>
       </div>
-      <span className="text-xs text-[#8B949E] opacity-75 px-4 text-center">
-        This tool is for entertainment purposes only. It is not affiliated with
-        Polymarket and should not be used to create misleading or fraudulent
-        content.
-      </span>
     </div>
   );
 }
